@@ -13,6 +13,13 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  margin: 0 auto;
+  padding: 2rem;
+
+  --good-color: green;
+  --bad-color: red;
+  --warning-color: orange;
 }
 
 a {
