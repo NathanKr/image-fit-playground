@@ -2,7 +2,7 @@ import { SyntheticEvent, useState } from "react";
 import IOffset from "../types/i-offset";
 import styles from "../styles/image-fit-to-container.module.css";
 import IElement from "../types/i-element";
-import { IMAGE_SRC } from "../utils/constants";
+import { IMAGE_SRC, IMAGE_SRC_CROPPED_SHARP } from "../utils/constants";
 import AspectRatioText from "./aspect-ratio-text";
 import ImageFitContianerText from "./image-fit-contianer-text";
 import ImageClippedText from "./image-clipped-text";
@@ -19,7 +19,7 @@ const elemsData: IElement[] = [
     ),
     elem: (
       <div className={styles.Container}>
-        <img src={IMAGE_SRC} alt="" width="100%" />
+        <img src={IMAGE_SRC} alt="width 100% with container" width="100%" />
       </div>
     ),
   },
@@ -34,7 +34,7 @@ const elemsData: IElement[] = [
     ),
     elem: (
       <div className={styles.Container}>
-        <img src={IMAGE_SRC} alt="" height="100%" />
+        <img src={IMAGE_SRC} alt="height 100% with container" height="100%" />
       </div>
     ),
   },
@@ -53,7 +53,12 @@ const elemsData: IElement[] = [
     ),
     elem: (
       <div className={styles.Container}>
-        <img src={IMAGE_SRC} width="100%" height="100%" alt="" />
+        <img
+          src={IMAGE_SRC}
+          width="100%"
+          height="100%"
+          alt="height 100% and width 100% with container"
+        />
       </div>
     ),
   },
@@ -66,7 +71,11 @@ const elemsData: IElement[] = [
     ),
     elem: (
       <div>
-        <img className={styles.Container} src={IMAGE_SRC} alt="" />
+        <img
+          className={styles.Container}
+          src={IMAGE_SRC}
+          alt="height and width as container but without container"
+        />
       </div>
     ),
   },
@@ -84,7 +93,7 @@ const elemsData: IElement[] = [
         <img
           className={`${styles.Container} ${styles.ObjectFitContain}`}
           src={IMAGE_SRC}
-          alt=""
+          alt="object-fit : contain"
         />
       </div>
     ),
@@ -95,7 +104,7 @@ const elemsData: IElement[] = [
         object-fit : cover
         <br /> <AspectRatioText preserved={true} />,
         <ImageFitContianerText fit={true} />,
-        <ImageClippedText clipped={true}/>
+        <ImageClippedText clipped={true} />
       </h3>
     ),
     elem: (
@@ -103,8 +112,30 @@ const elemsData: IElement[] = [
         <img
           className={`${styles.Container} ${styles.ObjectFitCover}`}
           src={IMAGE_SRC}
-          alt=""
+          alt="object-fit : cover"
         />
+      </div>
+    ),
+  },
+  {
+    header: (
+      <h3>
+        cropped by{" "}
+        <a href="https://github.com/NathanKr/image-processing-with-sharp-playground">
+          sharp
+        </a>{" "}
+        to container width \ height
+        <br /> <AspectRatioText preserved={true} />,
+        <ImageFitContianerText fit={true} />,
+        <ImageClippedText clipped={true} />
+        <br />
+        It is better than object-fit:cover because it is more cntered and
+        performance(size , offline processing)
+      </h3>
+    ),
+    elem: (
+      <div>
+        <img src={IMAGE_SRC_CROPPED_SHARP} alt="cropped by sharp" />
       </div>
     ),
   },
